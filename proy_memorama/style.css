@@ -1,0 +1,40 @@
+.card-grid {
+  display: grid;
+  justify-content: center; /* Centra el grid horizontalmente */
+  align-content: center; /* Centra el grid verticalmente */
+  margin-right: 5px;
+  /* El grid se ajusta automáticamente al tamaño del contenedor y cada columna tiene un ancho mínimo de 200px */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px; /* Espacio entre las tarjetas */
+}
+
+/* estilos.css */
+.btn {
+  background-color: #4caf50; /* Color de fondo */
+  color: white; /* Color del texto */
+  padding: 10px 20px; /* Espaciado interior */
+  font-size: 16px; /* Tamaño de la fuente */
+  border: none; /* Quita el borde */
+  border-radius: 5px; /* Redondea las esquinas */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+/* Cambia el estilo al pasar el cursor sobre el botón */
+.btn:hover {
+  background-color: #45a049; /* Cambia el color de fondo */
+}
+
+.form-container {
+  text-align: center; /* Alinea el contenido al centro */
+  margin-top: 10px; /* Margen superior para separar el formulario del borde superior */
+}
+
+.contenedor {
+  text-align: center; /* Alinea el contenido al centro */
+  margin-top: 10px; /* Margen superior para separar el formulario del borde superior */
+}
+
+.contenedor-derecha {
+  text-align: right; /* Alinea el contenido a la derecha */
+  margin-top: 10; /* Margen superior para separar el formulario del borde superior */
+}
