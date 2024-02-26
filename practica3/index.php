@@ -3,7 +3,6 @@
 <body>
 	<?php
 
-
 	class Persona
 	{
 		private $nombre;

@@ -1,46 +1,26 @@
-<?php
+<html>
+<head>
+	<title>
+		Práctica 5: Promedio de un array
+	</title>
+</head>
+<body>
+	<?php
+	//Calcular el promedio de un array
+	$numeros = [85, 93, 2, 9, 11, 201];
 
-abstract class Unit{
-	protected $name = "";
-	protected $salud = 100;
+	echo "<br>";
+	$suma = 0;
 
-
-	public function __construct($p_name)
-	{
-		$this->name = $p_name;
+	for ($i = 0; $i < count($numeros); $i++) {
+		$suma = $suma + $numeros[$i];
 	}
+	echo "la suma de los numeros es: " . $suma;
+	$promedio = $suma / count($numeros);
+	echo "<br>";
+	echo "el promedio de los numeros es: " . $promedio;
 
-	abstract public function attack($opponent);
-	
+	?>
+</body>
 
-}
-
-class Soldier extends Unit{
-
-	protected $weapon = "Espada";
-
-
-	public function attack($opponent)
-	{
-		echo $this->name . ' ataca a ' . $opponent. ' con '. $this->weapon;
-	}
-
-	public function setWeapon($new_weapon)
-	{
-
-		$this->weapon = $new_weapon;
-	}
-
-}
-
-
-
-$unidad1 = new Soldier("Soldado 1");
-
-$unidad1->setWeapon("Navaja");
-
-$unidad1->attack("Aldeano");
-
-
-
-?>
+</html>

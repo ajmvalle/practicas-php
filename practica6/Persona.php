@@ -15,6 +15,6 @@ class Persona
 
 		public function getNombreCompleto()
 		{
-			return "$this->nombre $this->paterno" . ($this->materno ? " $this->materno" : "");//Operador ternario
+			return "$this->nombre $this->paterno" . ($this->materno ? " $this->materno" : "");
 		}
 	}
