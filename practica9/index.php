@@ -1,44 +1,100 @@
 <?php
 
-abstract class Unit{
-	protected $name = "";
-	protected $salud = 100;
+/*
+ * Práctica 9:
+ * Programación Orientada a Objetos en PHP
+ * Clases y Herencia
+ *
+ * Desarrollo de una clase Unidad que se puede especializar en:
+ * - Soldado
+ * - Arquero
+ *
+ * En común tienen Nombre y Puntos de Vida(Sangre)
+ * Debe haber dos métodos comunes Atacar y RecibirDaño
+ *
+ * */
 
-	public function __construct($p_name)
-	{
-		$this->name = $p_name;
-	}
+abstract class Unidad
+{
+    protected $sangre = 100;
+    protected $nombre;
+    protected $arma = "";
+    protected $ataque = 0;
 
-	abstract public function attack($opponent);	
+    public function __construct($nombre)
+    {
+        $this->nombre = $nombre;
+    }
 
+    public function getSangre()
+    {
+        return $this->sangre;
+    }
+
+    public function getAtaque()
+    {
+        return $this->ataque;
+    }
+
+    public function atacar(Unidad $objetivo)
+    {
+        $objetivo->recibirDanio($this->getAtaque());
+        echo "<p>$this->nombre ataca a $objetivo->nombre con $this->arma</p>";
+    }
+
+    public function recibirDanio($danio)
+    {
+        $this->sangre -= $danio;
+        echo "<p>$this->nombre recibe $danio puntos de daño</p>";
+    }
+
+    public function getEstado(){
+        if($this->sangre > 0)
+            return "Vivo";
+        else
+            return "Muerto";
+    }
 }
 
-class Soldier extends Unit{
-
-	protected $weapon = "Espada";
-
-
-	public function attack($opponent)
-	{
-		echo $this->name . ' ataca a ' . $opponent. ' con '. $this->weapon;
-	}
-
-	public function setWeapon($new_weapon)
-	{
-
-		$this->weapon = $new_weapon;
-	}
-
+class Soldado extends Unidad
+{
+    public function __construct($nombre)
+    {
+        parent::__construct($nombre);
+        $this->arma = "Espada";
+        $this->ataque = 5;
+    }
+}
+class Arquero extends Unidad
+{
+    public function __construct($nombre)
+    {
+        parent::__construct($nombre);
+        $this->arma = "Arco";
+        $this->ataque = 10;
+    }
 }
 
 
 
-$unidad1 = new Soldier("Soldado 1");
+echo "<h1>Práctica 9: Clases y Herencia</h1>";
+$soldado1 = new Soldado("Soldado 1");
+$arquero1 = new Arquero("Arquero 1");
 
-$unidad1->setWeapon("Navaja");
+$soldado1->atacar($arquero1);
 
-$unidad1->attack("Aldeano");
+echo "La sangre del arquero es: " . $arquero1->getSangre() . "<br>";
 
+$arquero1->atacar($soldado1);
+
+echo "La sangre del soldado es: " . $soldado1->getSangre() . "<br>";
+
+$arquero1->atacar($soldado1);
+
+echo "Estado del Soldado es: " . $soldado1->getEstado() . "<br>";
+
+
+$soldado1->tomaBotiquin(80);
 
 
 ?>
